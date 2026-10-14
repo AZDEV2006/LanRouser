@@ -1,14 +1,31 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LanRouser</title>
-</head>
-<body>
-  <main>
-    <h1>LanRouser</h1>
-    <p>Flask application initialized successfully.</p>
-  </main>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f3f5ef" />
+    <title>LanRouser | Network Console</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('frontend_asset', asset_path='styles/index.css') }}"
+    />
+    <script
+      type="module"
+      src="{{ url_for('frontend_asset', asset_path='scripts/index.js') }}"
+    ></script>
+  </head>
+  <body>
+    {% include "components/header.html" %}
+    <main>
+      {% include "components/page_heading.html" %} {% include
+      "components/summary.html" %}
+      <section class="workspace" aria-label="Network devices">
+        {% include "components/scan_panel.html" %} {% include
+        "components/devices_panel.html" %}
+      </section>
+      {% include "components/footer.html" %}
+    </main>
+    {% include "components/register_dialog.html" %} {% include
+    "components/notifications.html" %}
+  </body>
 </html>

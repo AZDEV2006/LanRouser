@@ -1,38 +1,16 @@
 import ipaddress
 import json
-import re
 import uuid
 from pathlib import Path
 
 from flask import Flask, jsonify, render_template, request, send_from_directory
 
 from backend import scanner, wol_engine
+from backend.device_store import find_device, load_devices, save_devices
 
 
 TEMPLATE_DIRECTORY = Path(__file__).parent / "frontend" / "templates"
 app = Flask(__name__, template_folder=str(TEMPLATE_DIRECTORY))
-STORAGE_PATH = Path(__file__).with_name("storage.json")
-MAC_PATTERN = re.compile(r"^(?:[0-9a-fA-F]{12}|(?:[0-9a-fA-F]{2}[:-]){5}[0-9a-fA-F]{2})$")
-
-
-def load_devices():
-    if not STORAGE_PATH.exists() or not STORAGE_PATH.read_text(encoding="utf-8").strip():
-        return []
-
-    devices = json.loads(STORAGE_PATH.read_text(encoding="utf-8"))
-    if not isinstance(devices, list):
-        raise ValueError("Device storage must contain a JSON list")
-    return devices
-
-
-def save_devices(devices):
-    temporary_path = STORAGE_PATH.with_suffix(".json.tmp")
-    temporary_path.write_text(json.dumps(devices, indent=2) + "\n", encoding="utf-8")
-    temporary_path.replace(STORAGE_PATH)
-
-
-def find_device(device_id):
-    return next((device for device in load_devices() if device.get("id") == device_id), None)
 
 
 def error_response(message, status_code):
@@ -42,6 +20,13 @@ def error_response(message, status_code):
 @app.get("/")
 def index():
     return render_template("index.html")
+
+
+@app.get("/assets/<path:asset_path>")
+def frontend_asset(asset_path):
+    if not asset_path.startswith(("styles/", "scripts/")) or Path(asset_path).suffix not in {".css", ".js"}:
+        return error_response("Asset not found", 404)
+    return send_from_directory(TEMPLATE_DIRECTORY, asset_path)
 
 
 @app.get("/health")
@@ -74,14 +59,18 @@ def register_device():
             raise ValueError
     except ValueError:
         return error_response("Enter a valid IPv4 address", 400)
-    if not MAC_PATTERN.fullmatch(mac):
-        return error_response("Enter a valid MAC address", 400)
 
-    normalized_mac = re.sub(r"[:-]", "", mac).upper()
-    normalized_mac = ":".join(normalized_mac[index:index + 2] for index in range(0, 12, 2))
+    normalize_mac = getattr(wol_engine, "normalize_mac", None)
+    if not callable(normalize_mac):
+        return error_response("MAC validation is not available yet", 503)
+    try:
+        normalized_mac = normalize_mac(mac)
+    except (TypeError, ValueError) as error:
+        return error_response(str(error) or "Enter a valid MAC address", 400)
+
     try:
         devices = load_devices()
-        if any(device.get("mac", "").replace(":", "").replace("-", "").upper() == normalized_mac.replace(":", "") for device in devices):
+        if any(normalize_mac(device.get("mac", "")) == normalized_mac for device in devices):
             return error_response("A device with this MAC address is already registered", 409)
 
         device = {

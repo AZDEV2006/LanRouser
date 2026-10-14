@@ -1,0 +1,93 @@
+dialog {
+  width: min(440px, calc(100% - 32px));
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  color: var(--ink);
+  background: var(--paper);
+  box-shadow: 0 24px 70px rgba(20, 36, 25, 0.24);
+}
+dialog::backdrop {
+  background: rgba(24, 36, 27, 0.38);
+  backdrop-filter: blur(2px);
+}
+.dialog-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 21px 16px;
+  border-bottom: 1px solid var(--line);
+}
+.dialog-head h2 {
+  margin: 0 0 5px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 23px;
+  font-weight: 500;
+}
+.dialog-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+.dialog-body {
+  padding: 18px 21px;
+}
+.field {
+  display: block;
+  margin-bottom: 14px;
+}
+.field-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 11px;
+  font-weight: 750;
+}
+.field input {
+  width: 100%;
+  height: 39px;
+  padding: 0 11px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--ink);
+  background: white;
+  font-size: 12px;
+}
+.field input::placeholder {
+  color: #a0a8a0;
+}
+.field-help {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 10px;
+}
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 9px;
+  padding: 14px 21px 18px;
+  border-top: 1px solid var(--line);
+}
+.toast-region {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 10;
+  display: grid;
+  gap: 8px;
+  width: min(360px, calc(100vw - 32px));
+}
+.toast {
+  padding: 12px 14px;
+  border: 1px solid #d9e2d5;
+  border-left: 3px solid var(--green);
+  border-radius: 5px;
+  color: var(--ink);
+  background: var(--paper);
+  box-shadow: var(--shadow);
+  font-size: 12px;
+  animation: rise-in 0.2s ease both;
+}
+.toast.error {
+  border-left-color: var(--red);
+}

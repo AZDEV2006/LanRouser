@@ -1,0 +1,61 @@
+:root {
+  color-scheme: light;
+  --ink: #1e2923;
+  --muted: #707a72;
+  --line: #dce2d9;
+  --paper: #fbfcf8;
+  --canvas: #f1f4ee;
+  --green: #27734f;
+  --green-dark: #1b563a;
+  --lime: #d9eea7;
+  --orange: #bd5b34;
+  --orange-soft: #f8e8dd;
+  --red: #a8433b;
+  --shadow: 0 14px 38px rgba(39, 56, 42, 0.07);
+  font-family: "Aptos", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  min-width: 320px;
+  margin: 0;
+  color: var(--ink);
+  background-color: var(--canvas);
+  background-image: radial-gradient(#dfe5dc 0.7px, transparent 0.7px);
+  background-size: 18px 18px;
+}
+button,
+input {
+  font: inherit;
+}
+button {
+  color: inherit;
+}
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
