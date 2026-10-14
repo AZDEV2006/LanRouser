@@ -1,0 +1,40 @@
+.device-primary {
+  overflow: hidden;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.device-secondary {
+  margin-top: 4px;
+  color: var(--muted);
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 10px;
+}
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #7b857b;
+  font-size: 10px;
+}
+.status-pill::before {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a9b0a7;
+  content: "";
+}
+.status-pill.online {
+  color: var(--green-dark);
+}
+.status-pill.online::before {
+  background: #57a46d;
+}
+.status-pill.offline {
+  color: var(--red);
+}
+.status-pill.offline::before {
+  background: #c56a5b;
+}

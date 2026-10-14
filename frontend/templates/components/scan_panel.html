@@ -1,0 +1,62 @@
+<article class="panel" aria-labelledby="scanTitle">
+  <header class="panel-header">
+    <div class="panel-heading">
+      <span class="panel-icon" aria-hidden="true"
+        ><svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="10.8" cy="10.8" r="6.5" />
+          <path d="m16 16 4.5 4.5M10.8 7v7.6m-3.8-3.8h7.6" /></svg
+      ></span>
+      <div>
+        <h2 class="panel-title" id="scanTitle">Network scan</h2>
+        <p class="panel-caption">Find active hosts on your subnet</p>
+      </div>
+    </div>
+    <span class="count-badge" id="scanBadge">0</span>
+  </header>
+  <div class="scan-intro">
+    <p>
+      Scan your local network to identify devices by their IPv4 and hardware
+      address. Register a result to keep it in your device list.
+    </p>
+  </div>
+  <div class="scan-toolbar">
+    <span class="scan-hint" id="scanHint">Ready when you are</span
+    ><button
+      class="button button-quiet"
+      id="scanAgain"
+      type="button"
+      aria-label="Scan network again"
+    >
+      Scan again
+    </button>
+  </div>
+  <div class="scan-results" id="scanResults" aria-live="polite">
+    <div class="scan-empty">
+      <div>
+        <span class="empty-mark"
+          ><svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          >
+            <circle cx="10.8" cy="10.8" r="6.5" />
+            <path d="m16 16 4.5 4.5" /></svg
+        ></span>
+        <p class="empty-title">No scan results yet</p>
+        <p class="empty-copy">
+          Start a scan to see devices currently<br />reachable on your local
+          network.
+        </p>
+      </div>
+    </div>
+  </div>
+</article>

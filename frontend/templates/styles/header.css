@@ -1,0 +1,63 @@
+.topbar {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 max(24px, calc((100vw - 1280px) / 2));
+  background: rgba(251, 252, 248, 0.94);
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+.brand-mark {
+  display: grid;
+  width: 31px;
+  height: 31px;
+  place-items: center;
+  border-radius: 9px;
+  color: #f8fff3;
+  background: var(--green-dark);
+}
+.brand-mark svg {
+  width: 19px;
+  height: 19px;
+}
+.brand-name {
+  font-size: 15px;
+}
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.service-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.state-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #a2aa9f;
+}
+.state-dot.ready {
+  background: #53a36a;
+  box-shadow: 0 0 0 3px #e0f0dd;
+}
+.state-dot.error {
+  background: var(--red);
+}
+.topbar-label {
+  padding-left: 20px;
+  border-left: 1px solid var(--line);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}

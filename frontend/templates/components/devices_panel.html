@@ -1,0 +1,82 @@
+<article class="panel" aria-labelledby="devicesTitle">
+  <header class="panel-header">
+    <div class="panel-heading">
+      <span class="panel-icon" aria-hidden="true"
+        ><svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <rect x="3.5" y="4" width="17" height="12" rx="1.5" />
+          <path d="M8 20h8m-4-4v4m-5-9 3 3 6-6" /></svg
+      ></span>
+      <div>
+        <h2 class="panel-title" id="devicesTitle">Registered devices</h2>
+        <p class="panel-caption">
+          Saved targets for reachability and Wake-on-LAN
+        </p>
+      </div>
+    </div>
+    <span class="count-badge" id="deviceBadge">0</span>
+  </header>
+  <div class="devices-toolbar">
+    <label class="search-wrap">
+      <span class="sr-only">Filter registered devices</span>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+      >
+        <circle cx="10.8" cy="10.8" r="6.5" />
+        <path d="m16 16 4.5 4.5" />
+      </svg>
+      <input
+        class="search-input"
+        id="deviceSearch"
+        type="search"
+        placeholder="Filter devices"
+        autocomplete="off"
+      />
+    </label>
+    <button
+      class="button button-quiet"
+      id="refreshDevices"
+      type="button"
+      aria-label="Refresh registered devices"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M20 7v5h-5M4 17v-5h5" />
+        <path d="M5.6 9a7 7 0 0 1 11.7-2L20 12M4 12l2.7 5a7 7 0 0 0 11.7-2" />
+      </svg>
+      Refresh
+    </button>
+  </div>
+  <div id="devicesContent" aria-live="polite">
+    <div class="devices-table-wrap">
+      <table class="devices-table">
+        <thead>
+          <tr>
+            <th>Device</th>
+            <th>IPv4 address</th>
+            <th>Status</th>
+            <th><span class="sr-only">Actions</span></th>
+          </tr>
+        </thead>
+        <tbody id="devicesBody"></tbody>
+      </table>
+    </div>
+    <div class="mobile-device-list" id="mobileDeviceList"></div>
+  </div>
+</article>

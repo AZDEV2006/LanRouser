@@ -1,0 +1,142 @@
+@media (max-width: 900px) {
+  .overview {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .metric-scan {
+    grid-column: 1 / -1;
+    min-height: 70px;
+    border-top: 1px solid var(--line);
+  }
+  .metric:nth-child(3) {
+    border-right: 0;
+  }
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+  .scan-list {
+    max-height: 300px;
+  }
+}
+@media (max-width: 600px) {
+  .topbar {
+    height: 60px;
+    padding: 0 17px;
+  }
+  .topbar-label {
+    display: none;
+  }
+  main {
+    width: calc(100% - 32px);
+    padding: 32px 0 42px;
+  }
+  .page-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 17px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: 32px;
+  }
+  .heading-actions {
+    width: 100%;
+  }
+  .heading-actions .button {
+    flex: 1;
+  }
+  .overview {
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 16px;
+  }
+  .metric {
+    min-height: 78px;
+    padding: 12px 11px;
+  }
+  .metric-value {
+    font-size: 23px;
+  }
+  .metric-label {
+    font-size: 9px;
+    letter-spacing: 0.04em;
+  }
+  .metric-note {
+    font-size: 9px;
+  }
+  .metric-scan {
+    grid-column: 1 / -1;
+    min-height: 67px;
+    padding: 12px 14px;
+  }
+  .metric-scan .metric-value {
+    font-size: 12px;
+  }
+  .panel-header {
+    min-height: 65px;
+    padding: 13px 14px;
+  }
+  .scan-intro {
+    padding: 15px 15px 12px;
+  }
+  .scan-toolbar {
+    padding: 0 15px 13px;
+  }
+  .devices-toolbar {
+    padding: 10px 13px;
+  }
+  .search-wrap {
+    max-width: none;
+  }
+  .devices-table-wrap {
+    display: none;
+  }
+  .mobile-device-list {
+    display: block;
+  }
+  .mobile-device-row {
+    padding: 14px;
+    border-bottom: 1px solid #edf0e9;
+  }
+  .mobile-device-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .mobile-device-row .device-primary {
+    font-size: 13px;
+  }
+  .mobile-addresses {
+    display: grid;
+    gap: 4px;
+    margin-top: 9px;
+    color: var(--muted);
+    font-family: "Cascadia Code", Consolas, monospace;
+    font-size: 10px;
+  }
+  .mobile-actions {
+    display: flex;
+    gap: 7px;
+    margin-top: 12px;
+  }
+  .mobile-actions .button {
+    flex: 1;
+    min-height: 34px;
+  }
+  .mobile-empty {
+    min-height: 205px;
+  }
+  .footer-note {
+    flex-direction: column;
+    line-height: 1.5;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

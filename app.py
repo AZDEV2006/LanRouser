@@ -22,6 +22,13 @@ def index():
     return render_template("index.html")
 
 
+@app.get("/assets/<path:asset_path>")
+def frontend_asset(asset_path):
+    if not asset_path.startswith(("styles/", "scripts/")) or Path(asset_path).suffix not in {".css", ".js"}:
+        return error_response("Asset not found", 404)
+    return send_from_directory(TEMPLATE_DIRECTORY, asset_path)
+
+
 @app.get("/health")
 def health():
     return jsonify({"status": "ok", "service": "LanRouser"})

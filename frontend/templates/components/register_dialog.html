@@ -1,0 +1,67 @@
+<dialog id="registerDialog" aria-labelledby="dialogTitle">
+  <form id="registerForm">
+    <header class="dialog-head">
+      <div>
+        <h2 id="dialogTitle">Register a device</h2>
+        <p>Save an IPv4 host for quick network actions.</p>
+      </div>
+      <button
+        class="icon-button"
+        type="button"
+        id="closeDialog"
+        aria-label="Close dialog"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+        >
+          <path d="m6 6 12 12M18 6 6 18" />
+        </svg>
+      </button>
+    </header>
+    <div class="dialog-body">
+      <label class="field"
+        ><span class="field-label">Device name</span
+        ><input
+          id="deviceName"
+          name="name"
+          maxlength="60"
+          placeholder="e.g. Office workstation"
+          required
+          autocomplete="off"
+      /></label>
+      <label class="field"
+        ><span class="field-label">IPv4 address</span
+        ><input
+          id="deviceIp"
+          name="ip"
+          inputmode="decimal"
+          placeholder="192.168.1.42"
+          required
+          autocomplete="off"
+      /></label>
+      <label class="field"
+        ><span class="field-label">MAC address</span
+        ><input
+          id="deviceMac"
+          name="mac"
+          placeholder="AA:BB:CC:DD:EE:FF"
+          required
+          autocomplete="off"
+          spellcheck="false"
+        /><span class="field-help"
+          >Used to address the Wake-on-LAN packet.</span
+        ></label
+      >
+    </div>
+    <footer class="dialog-actions">
+      <button class="button" type="button" id="cancelRegister">Cancel</button
+      ><button class="button button-primary" id="saveDevice" type="submit">
+        Save device
+      </button>
+    </footer>
+  </form>
+</dialog>
